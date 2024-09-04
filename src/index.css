@@ -1,0 +1,15 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	overflow-x: hidden;
+	background-color: #d5f766d5;
+}
+body::-webkit-scrollbar{
+	display: none;
+}
+
+button {
+	transition: all .25s ease-out;
+}
