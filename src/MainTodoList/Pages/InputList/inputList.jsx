@@ -17,15 +17,18 @@ export default function InputList({ pagination }){
 	function handleStateTasks(param){
 		setStateOfTasks(param)
 		var data = JSON.parse(localStorage.getItem("TodoList"))
-		for(let i = 0; i < data.length; i++){
-			if(data[i].isChecked === "true"){
-				data[i].isChecked = "false"
+		if(data){
+			for(let i = 0; i < data.length; i++){
+				if(data[i].isChecked === "true"){
+					data[i].isChecked = "false"
+				}
 			}
-		}
 
-		setSelected(0)
-		localStorage.setItem("TodoList", JSON.stringify(data))
-		setTaskLists([...data])
+			setSelected(0)
+			localStorage.setItem("TodoList", JSON.stringify(data))
+			setTaskLists([...data])
+		}
+		
 	}
 
 	function addTask(){
@@ -88,12 +91,14 @@ export default function InputList({ pagination }){
 	useEffect(()=>{
 		window.onload = ()=>{
 			var data = JSON.parse(localStorage.getItem("TodoList"))
-			for(let i = 0; i < data.length ; i++){
+			if(data){
+				for(let i = 0; i < data.length ; i++){
 				data[i].isChecked = "false"
 			}
 	
 			setTaskLists([...data])
 			localStorage.setItem("TodoList", JSON.stringify(data))
+			}
 		}
 	}, [taskLists])
 

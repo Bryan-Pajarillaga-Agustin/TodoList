@@ -162,8 +162,14 @@ export default function PDocumentation({ pagination, userRootName, data, setData
 		// })
 		let data = JSON.parse(localStorage.getItem("data"))
 		let RootFolder = JSON.parse(localStorage.getItem("RootFolder"))
-		setDataLocal(data)
-		setFolderRootName(RootFolder.UserRootName)
+		if(data){
+			setDataLocal(data)
+		}
+		
+		if(RootFolder){
+			setFolderRootName(RootFolder.UserRootName)
+		}
+		
 	}, [data])
 	
 	useEffect(()=>{
